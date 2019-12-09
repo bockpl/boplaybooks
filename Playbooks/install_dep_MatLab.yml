@@ -1,0 +1,9 @@
+---
+
+- name: "Instalacja zaleznosci dla oprgramowania MatLab"
+  hosts: "{{ var_host | default('blueocean') }}"
+  tasks:
+    - name: "Instalacja witch" 
+      yum:
+        name: which
+        state: present
