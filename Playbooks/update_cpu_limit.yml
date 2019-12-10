@@ -1,0 +1,14 @@
+---
+
+- name: "Aktualizacja limitu CPU"
+  hosts: blueocean
+  tasks:
+
+  - name: Montowanie RSP
+    raw: mfsmount -H mfsmaster.dev.p.lodz.pl -S /blueocean/opt /opt
+
+  - name: Przeladowanie konfiguracji dockera
+    command: /opt/software/Blueocean/script/update_cpu_limit.sh
+
+  - name: Odmontowanie RSP
+    raw: umount /opt

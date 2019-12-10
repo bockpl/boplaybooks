@@ -1,0 +1,16 @@
+---
+
+- name: "Aktualizacja pliku unit'u bocompute - wdrozenie limitow CPU, RAM"
+  hosts: blueocean
+  tasks:
+
+  - name: Montowanie RSP
+    raw: mfsmount -H mfsmaster.dev.p.lodz.pl -S /blueocean/opt /opt
+
+  - name: Kopiowanie pliku unit'a bocompute
+    copy:
+     src: /opt/software/Blueocean/Configs/bocompute
+     dest: /etc/init.d/
+
+  - name: Odmontowanie RSP
+    raw: umount /opt

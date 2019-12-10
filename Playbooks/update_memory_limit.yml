@@ -1,0 +1,14 @@
+---
+
+- name: "Aktualizacja limitu Pamieci (-4GB)"
+  hosts: blueocean
+  tasks:
+
+  - name: Montowanie RSP
+    raw: mfsmount -H mfsmaster.dev.p.lodz.pl -S /blueocean/opt /opt
+
+  - name: Przeladowanie konfiguracji dockera
+    command: /opt/software/Blueocean/script/update_memory_limit.sh
+
+  - name: Odmontowanie RSP
+    raw: umount /opt
