@@ -1,0 +1,39 @@
+---
+- name: "Instalacja sterownika NVidia"
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars: 
+    driver: 415.27
+    driver_url: http://us.download.nvidia.com/XFree86/Linux-x86_64/{{driver}}/NVIDIA-Linux-x86_64-{{driver}}-no-compat32.run
+  tasks:
+    - name: "Instalacja srodowiska koplilacji"
+      apt:
+        name: 
+         - build-essential
+         - "linux-headers-{{ ansible_kernel }}"
+        state: present
+        update_cache: yes
+    - get_url: dest=. url={{driver_url}}
+    - command: systemctl isolate multi-user.target
+    - shell: rmmod nvidia_uvm nvidia_drm nvidia_modeset nvidia || true
+    - modprobe: name=nvidia state=absent
+      ignore_errors: True
+    - name: "Kasowanie /tmp/.X11*"
+      file:
+        path: /tmp/.X11*
+        state: absent
+    - name: "Zmiana uprawnien pliku sterownika:" 
+      file:
+        path: NVIDIA-Linux-x86_64-{{driver}}-no-compat32.run
+        mode: 0777
+    - command: bash NVIDIA-Linux-x86_64-{{driver}}-no-compat32.run -q -a --ui=none --uninstall
+    - command: bash NVIDIA-Linux-x86_64-{{driver}}-no-compat32.run -q -a --ui=none
+    - shell: nvidia-xconfig < /dev/null
+    - command: systemctl isolate graphical.target
+    - command: systemctl set-default graphical.target
+    - name: "Kasowanie /tmp/.X11*"
+      file:
+        path: NVIDIA-Linux-x86_64-{{driver}}-no-compat32.run
+        state: absent
+
