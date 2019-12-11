@@ -1,0 +1,14 @@
+---
+
+- name: "Aktualizacja sciezek pod nowy bocompute"
+  hosts: blueocean
+  tasks:
+
+  - name: aktualizacja sciezek RSP
+    raw: mkdir /srv/blueocean/home
+
+  - name: aktualizacja sciezek RSP
+    raw: mkdir /srv/blueocean/opt
+
+  - name: sprawdzenie sciezek RSP
+    raw: ls -lAtr /srv | grep blueocean 
