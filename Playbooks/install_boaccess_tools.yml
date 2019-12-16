@@ -15,5 +15,6 @@
           - unzip
           - screen
           - tcsh
+          - man
         state: present
         update_cache: yes
