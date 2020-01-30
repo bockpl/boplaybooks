@@ -1,0 +1,27 @@
+---
+
+- name: "Instlacja narzedzi uzytkownika noda boaccess"
+  hosts: "{{ var_host | default('blueocean') }}"
+  tasks:
+    - name: "Instalacja narzedzi uzytkownika" 
+      yum:
+        name: 
+          - nano
+          - less
+          - mc
+          - gawk
+          - perl
+          - unzip
+          - screen
+          - tcsh
+          - man
+        state: present
+        update_cache: yes
+    - name: "Instalacja vim8 minimal"
+    - shell: yum install http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/vim-minimal-8.0.003-1.gf.el7.x86_64.rpm
+    - name: "Instalacja vim8 filesystem"
+    - shell: yum install http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/vim-filesystem-8.0.003-1.gf.el7.x86_64.rpm
+    - name: "Instalacja vim8 common"
+    - shell: yum install http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/vim-common-8.0.003-1.gf.el7.x86_64.rpm
+    - name: "Instalacja vim8 enhanced"
+    - shell: yum install http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/vim-enhanced-8.0.003-1.gf.el7.x86_64.rpm
