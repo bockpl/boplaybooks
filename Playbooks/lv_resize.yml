@@ -1,0 +1,16 @@
+---
+- name: "LVM - lokalna konfiguracja"
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  tasks:
+    - name: "Rozszerzenie volumentu lvroot:"
+      lvol:
+        vg: vgroot
+        lv: lvroot
+        size: 6144
+    - name: "Rozszerzenie systemu plikow xfs:"
+      filesystem:
+        fstype: xfs
+        dev: /dev/vgroot/lvroot
+        resizefs: yes
