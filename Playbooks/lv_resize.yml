@@ -1,8 +1,6 @@
 ---
 - name: "LVM - lokalna konfiguracja"
-  hosts: 127.0.0.1
-  connection: local
-  become: yes
+  hosts: "{{ var_host | default('blueocean') }}"
   tasks:
     - name: "Rozszerzenie volumentu lvroot:"
       lvol:
