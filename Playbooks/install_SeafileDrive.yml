@@ -1,0 +1,15 @@
+---
+
+- name: "Instalacja oprgramowania SeaDrive"
+  hosts: "{{ var_host | default('blueocean') }}"
+  tasks:
+    - name: "Download seafile repository"
+      get_url:
+        url: https://git.io/seadrive-centos7-repo
+        dest: /etc/yum.repos.d/seadrive.repo
+    - name: "Instalacja pakietow SeaDrive"
+      yum:
+        name:
+          - seadrive
+        state: present
+        update_cache: yes
