@@ -1,0 +1,13 @@
+---
+
+- name: "Instlacja oprogramowania uslugowego i narzedzowego dla systemu mfs1 i mfs2:"
+  hosts: localhost
+  connection: local 
+  tasks:
+    - name: "Instalacja oprogramowania uslugowego dnsmasq" 
+      apt:
+        name: 
+          - dnsmasq
+          - dnsmasq-base
+        state: present
+        update_cache: yes

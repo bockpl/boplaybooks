@@ -1,0 +1,25 @@
+---
+
+- name: "Instlacja oprogramowania uslugowego i narzedzowego dla systemu mfs1 i mfs2:"
+  hosts: localhost
+  connection: local 
+  tasks:
+    - name: "Sciaganie, dodawanie klucza apt"
+      apt_key:
+        url: https://ppa.moosefs.com/moosefs.key
+        state: present
+    - name: "Sciaganie MooseFS.repo"
+      apt_repository:
+        repo: deb http://ppa.moosefs.com/3.0.112/apt/ubuntu/bionic bionic main
+        state: present
+        filename: moosefs_3.0.112
+    - name: "Instalacja oprogramowania uslugowego" 
+      apt:
+        name: 
+          - moosefs-pro-master
+          - moosefs-pro-cgiserv
+          - moosefs-pro-cgi
+          - moosefs-pro-cli
+          - moosefs-pro-supervisor
+        state: present
+        update_cache: yes
