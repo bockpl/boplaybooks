@@ -1,0 +1,25 @@
+---
+
+- name: "Start kontenera boipxe:"
+  hosts: localhost
+  connection: local 
+  tasks:
+#    - name: "Zamontowanie przestrzeni RSP - obrazy/CONFIG:"
+#      raw: mfsmount -H mfsmaster.dev.p.lodz.pl -S /obrazy/KOPL /srv/tftp/templates      
+    - name: "Tworzenie sieci PXE_core"
+      docker_network:
+        name: PXE_core
+        driver: macvlan
+        driver_options: 
+          parent: eth0
+        ipam_options:
+          subnet: 10.100.0.0/24
+    - name: "Uruchomienie kontenera boipxe"
+      docker_container:
+        name: boipxe
+        image: bockpl/boipxe
+        volumes:
+          - /srv/tftp/templates:/srv/templates
+          - /srv/tftp/templates/CONFIGS/boipxePXECORE/etc:/srv/etc
+        networks:
+          - name: "{{ PXE_core }}"

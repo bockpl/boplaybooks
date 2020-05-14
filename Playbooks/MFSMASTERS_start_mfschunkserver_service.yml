@@ -1,0 +1,19 @@
+---
+
+- name: "Start kontenera mfschunkserwer:"
+  hosts: localhost
+  connection: local 
+  tasks:
+    - name: "Przegranie pliku systemd-unit: mfs  do /etc/init.d/"
+      copy:
+        src: /etc/config/mfs
+        dest: /etc/init.d/mfs      
+    - name: "Przeladowanie konfiguracji systemd - daemon-reload"
+      systemd:
+        daemon_reload: yes
+    - name: "Uruchomienie unitu mfs" 
+      systemd:
+        state: started
+        name: mfs
+        enabled: yes
+        masked: no
