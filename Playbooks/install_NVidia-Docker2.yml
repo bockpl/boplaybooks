@@ -40,15 +40,15 @@
     when: nvidia_docker_apt.changed == True
 
   - name: Montowanie RSP
-    raw: mfsmount -H mfsmaster.dev.p.lodz.pl -S /blueocean/opt /opt
+    raw: mfsmount -H mfsmaster.dev.p.lodz.pl -S /blueocean/opt /srv/blueocean/opt
 
   - name: Kopiowanie pliku konfiguracyjnego dockera
     copy:
-     src: /opt/software/Blueocean/Configs/docker_hosts/daemon.json
+     src: /srv/blueocean/opt/software/Blueocean/Configs/docker_hosts/daemon.json
      dest: /etc/docker/daemon.json
 
   - name: Odmontowanie RSP
-    raw: umount /opt
+    raw: umount /srv/blueocean/opt
 
   - name: Przeladowanie konfiguracji dockera
     command: pkill -SIGHUP dockerd 
