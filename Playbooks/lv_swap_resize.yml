@@ -1,0 +1,16 @@
+---
+- name: "LVM - lokalna konfiguracja"
+  hosts: 127.0.0.1
+  connection: local
+  become: yes 
+  tasks:
+    - name: "Rozszerzenie volumentu lvswap:"
+      lvol:
+        vg: vgroot
+        lv: lvswap
+        size: 10G
+    - name: "Rozszerzenie systemu plikow swap:"
+      filesystem:
+        fstype: swap
+        dev: /dev/vgroot/lvswap
+        resizefs: yes
