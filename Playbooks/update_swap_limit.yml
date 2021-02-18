@@ -1,0 +1,19 @@
+---
+
+- name: "Aktualizacja swap (10GB)"
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  tasks:
+
+  - name: Powiekszenie swap
+    raw: lvextend -L +9G /dev/mapper/vgroot-lvswap
+
+  - name: Odlaczenie swap
+    raw: swapoff /dev/mapper/vgroot-lvswap
+   
+  - name: Sformatowanie swap
+    raw: mkswap /dev/mapper/vgroot-lvswap
+   
+  - name: Ponowne podlaczenie swap
+    raw: swapon /dev/mapper/vgroot-lvswap
