@@ -1,0 +1,11 @@
+---
+- name: "Instlacja glibc-devel"
+  hosts: "{{ var_host | default('blueocean') }}"
+  tasks:
+    - name: "Instalacja glibc-devel"
+      yum:
+        name:
+          - glibc-devel.x86_64
+        state: present
+        update_cache: yes
+
