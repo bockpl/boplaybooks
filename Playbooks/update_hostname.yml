@@ -1,0 +1,11 @@
+- name: "Aktualizacja hostname, rozwiazanie problemu 0074801"
+#  hosts: "{{ var_host | default('blueocean') }}"
+  hosts: blueocean_new
+  tasks:
+    - name: "Aktualizacja plikow konfiguracyjnych w zakresie hostname"
+      command: "{{ item }}"
+      with_items:
+      - hostnamectl set-hostname --static localhost
+    - name: " Aktualizacja pliku /etc/hosts"
+      shell: | 
+        echo '127.0.0.1 localhost' >> /etc/hosts
