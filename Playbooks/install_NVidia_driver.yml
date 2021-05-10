@@ -4,7 +4,7 @@
   connection: local
   become: yes
   vars: 
-    driver: 460.32.03
+    driver: 465.27
     driver_url: http://us.download.nvidia.com/XFree86/Linux-x86_64/{{driver}}/NVIDIA-Linux-x86_64-{{driver}}-no-compat32.run
   tasks:
     - name: "Instalacja srodowiska koplilacji"
