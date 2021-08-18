@@ -4,4 +4,4 @@
   hosts: "{{ var_host | default('blueocean') }}"
   tasks:
           #    - name: "Instalacja filebead 7.13.3"
-    - shell: yum -y install https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.5.2-x86_64.rpm 
+    - shell: yum -y install https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.3-x86_64.rpm 
