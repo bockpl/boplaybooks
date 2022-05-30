@@ -32,8 +32,8 @@
           - tcl-devel.x86_64
           - tk.x86_64
           - tk-devel.x86_64
-          - java.x86_64
-          - java-devel.x86_64
+          - java
+          - java-devel
           - which.x86_64
         state: present
         update_cache: yes
