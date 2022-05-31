@@ -1,0 +1,13 @@
+---
+- name: "Instlacja ssh"
+  hosts: "{{ var_host | default('blueocean') }}"
+  tasks:
+    - name: "Instalacja komponentow ssh" 
+      yum:
+        name: 
+          - openssh-server.x86_64
+          - openssh.x86_64
+          - openssh-clients.x86_64
+          - openssh-askpass.x86_64
+        state: present
+        update_cache: yes
