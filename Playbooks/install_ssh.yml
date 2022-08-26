@@ -5,8 +5,8 @@
     - name: "Instalacja komponentow ssh" 
       yum:
         name: 
-          - openssh-server.x86_64
           - openssh.x86_64
+          - openssh-server.x86_64
           - openssh-clients.x86_64
           - openssh-askpass.x86_64
         state: present
