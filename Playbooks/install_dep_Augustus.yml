@@ -11,5 +11,7 @@
           - suitesparse.x86_64
           - lpsolve.x86_64
           - sqlite.x86_64
+          - mysql++
+          - mysql++-devel
         state: present
         update_cache: yes
