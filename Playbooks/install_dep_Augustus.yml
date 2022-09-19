@@ -8,10 +8,11 @@
           - boost-iostreams.x86_64
           - zlib.x86_64
           - gsl.x86_64
+          - gsl-devel.x86_64
           - suitesparse.x86_64
           - lpsolve.x86_64
           - sqlite.x86_64
-          - mysql++
-          - mysql++-devel
+          - mysql++.x86_64
+          - mysql++-devel.x86_64
         state: present
         update_cache: yes
