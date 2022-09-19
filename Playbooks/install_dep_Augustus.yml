@@ -14,7 +14,5 @@
           - lpsolve.x86_64
           - lpsolve-devel.x86_64
           - sqlite.x86_64
-          - mysql++.x86_64
-          - mysql++-devel.x86_64
         state: present
         update_cache: yes
