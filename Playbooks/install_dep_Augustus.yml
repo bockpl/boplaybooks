@@ -10,6 +10,7 @@
           - gsl.x86_64
           - gsl-devel.x86_64
           - suitesparse.x86_64
+          - suitesparse-devel.x86_64
           - lpsolve.x86_64
           - lpsolve-devel.x86_64
           - sqlite.x86_64
