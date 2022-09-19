@@ -11,6 +11,7 @@
           - gsl-devel.x86_64
           - suitesparse.x86_64
           - lpsolve.x86_64
+          - lpsolve-devel.x86_64
           - sqlite.x86_64
           - mysql++.x86_64
           - mysql++-devel.x86_64
