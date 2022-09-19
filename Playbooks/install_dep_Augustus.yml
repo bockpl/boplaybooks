@@ -14,5 +14,7 @@
           - lpsolve.x86_64
           - lpsolve-devel.x86_64
           - sqlite.x86_64
+          - samtools.x86_64
+          - htslib.x86_64
         state: present
         update_cache: yes
