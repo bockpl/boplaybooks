@@ -7,6 +7,7 @@
         name: 
           - boost-iostreams.x86_64
           - zlib.x86_64
+          - zlib-devel.x86_64
           - gsl.x86_64
           - gsl-devel.x86_64
           - suitesparse.x86_64
