@@ -15,5 +15,6 @@
           - lpsolve.x86_64
           - lpsolve-devel.x86_64
           - sqlite.x86_64
+          - sqlite-devel.x86_64
         state: present
         update_cache: yes
